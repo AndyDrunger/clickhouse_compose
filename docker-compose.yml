@@ -20,7 +20,7 @@ services:
     restart: unless-stopped
     networks:
       - clickhouse_net
-      - app_network
+      - app_net
     deploy:
       resources:
         limits:
@@ -34,5 +34,5 @@ volumes:
 networks:
   clickhouse_net:
     name: clickhouse_net
-  app_network:
+  app_net:
     driver: bridge
