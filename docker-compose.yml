@@ -35,4 +35,5 @@ networks:
   clickhouse_net:
     name: clickhouse_net
   app_net:
+    name: app_net
     driver: bridge
