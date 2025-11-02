@@ -29,9 +29,9 @@ services:
           memory: 500MB
 
   clickhouse_exporter:
-    image: ghcr.io/flant/clickhouse-exporter:latest
+    image: altinity/clickhouse-exporter:latest
+    platform: linux/amd64
     container_name: clickhouse_exporter
-    platform: linux/amd64   # <--- эта строка
     environment:
       - CLICKHOUSE_DSN=clickhouse://admin:password@clickhouse-server:9000/default
     ports:
