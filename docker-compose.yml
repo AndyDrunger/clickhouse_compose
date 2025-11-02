@@ -21,23 +21,13 @@ services:
     networks:
       - clickhouse_net
       - app_net
+      - prometheus_net
     deploy:
       resources:
         limits:
           memory: 2GB
         reservations:
           memory: 500MB
-
-  clickhouse_exporter:
-    image: percona/clickhouse-exporter:latest
-    container_name: clickhouse_exporter
-    environment:
-      - CLICKHOUSE_DSN=clickhouse://admin:password@clickhouse-server:9000/default
-    ports:
-      - "9116:9116"
-    networks:
-      - clickhouse_net
-      - prometheus_net
 
 
 volumes:
