@@ -30,7 +30,7 @@ services:
 
   clickhouse_exporter:
     image: flant/clickhouse-exporter:latest
-    platform: linux/amd64
+#    platform: linux/amd64
     container_name: clickhouse_exporter
     environment:
       - CLICKHOUSE_DSN=clickhouse://admin:password@clickhouse-server:9000/default
