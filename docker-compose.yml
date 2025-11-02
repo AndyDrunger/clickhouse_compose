@@ -28,6 +28,19 @@ services:
         reservations:
           memory: 500MB
 
+  clickhouse_exporter:
+    image: altinity/clickhouse-exporter:latest
+    container_name: clickhouse_exporter
+    environment:
+      - CLICKHOUSE_DSN=clickhouse://admin:password@clickhouse-server:9000/default
+    ports:
+      - "9116:9116"   # порт для Prometheus
+    networks:
+      - clickhouse_net
+      - prometheus_net
+    restart: always
+
+
 volumes:
   clickhouse_data:
 
@@ -38,3 +51,7 @@ networks:
     external: true
     name: app_net
     driver: bridge
+  prometheus_net:
+    external: True
+    name: prometheus_net
+
