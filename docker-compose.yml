@@ -29,16 +29,15 @@ services:
           memory: 500MB
 
   clickhouse_exporter:
-    image: altinity/clickhouse-exporter:latest
+    image: ghcr.io/flant/clickhouse-exporter:latest
     container_name: clickhouse_exporter
     environment:
       - CLICKHOUSE_DSN=clickhouse://admin:password@clickhouse-server:9000/default
     ports:
-      - "9116:9116"   # порт для Prometheus
+      - "9116:9116"
     networks:
       - clickhouse_net
-      - prometheus_net
-    restart: always
+      - app_net
 
 
 volumes:
